@@ -1,5 +1,5 @@
 .pageContainer {
-  padding-top: 3rem;
+  padding-top: 2em;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -8,12 +8,7 @@
 }
 
 .content {
-  width: 50%;
-  max-width: 600px;
   min-width: 300px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+
   text-align: center;
 }

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { getMembershipById } from "../utils/firebase";
-import Page from "./Page";
+import { getMembershipById } from "../../utils/firebase";
+import Page from "../fragments/Page";
 import { Link } from "react-router-dom";
+
 function LookupUser() {
   const [id, setId] = useState("");
   const [userData, setUserData] = useState(null);

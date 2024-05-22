@@ -1,14 +1,14 @@
 import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import Login from "./components/Login";
-import Logout from "./components/Logout";
-import Dashboard from "./components/Dashboard";
-import LogMembership from "./components/LogMembership";
-import LookupUser from "./components/LookupUser";
-import ListMembers from "./components/ListMembers";
-import LogEntry from "./components/LogEntry";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Login from "./components/pages/Login";
+import Logout from "./components/pages/Logout";
+import Dashboard from "./components/pages/Dashboard";
+import LogMembership from "./components/pages/AddCard";
+import LookupUser from "./components/pages/LookupUser";
+import ListMembers from "./components/pages/ListMembers";
+import LogEntry from "./components/pages/LogEntry";
+import Navbar from "./components/fragments/Navbar";
+import Footer from "./components/fragments/Footer";
 import { UserProvider, useUser } from "./context/UserContext";
 
 function App() {

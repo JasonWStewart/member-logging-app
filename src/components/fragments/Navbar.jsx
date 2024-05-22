@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useUser } from "../context/UserContext";
+import { useUser } from "../../context/UserContext";
 import styles from "./Navbar.module.css";
-import { BsSpeedometer, BsDoorOpen, BsDoorClosed } from "react-icons/bs";
+import { BsSpeedometer, BsDoorOpen, BsDoorClosed, BsPlusCircle, BsClipboard2Check, BsSearch } from "react-icons/bs";
 
 function Navbar() {
   const { user } = useUser();
@@ -18,24 +18,34 @@ function Navbar() {
         {user && (
           <>
             <Link to="/dashboard" className={styles.navItem}>
-              <BsSpeedometer />
+              <h2>
+                <BsSpeedometer />
+              </h2>
             </Link>
             <Link to="/log-membership" className={styles.navItem}>
-              Add
+              <h2>
+                <BsPlusCircle />
+              </h2>
             </Link>
             <Link to="/log-entry" className={styles.navItem}>
-              CheckIn
+              <h2>
+                <BsClipboard2Check />
+              </h2>
             </Link>
             <Link to="/lookup-user" className={styles.navItem}>
-              Lookup
+              <h2>
+                <BsSearch />
+              </h2>
             </Link>
             <Link to="/logout" className={styles.navItem}>
-              <BsDoorOpen />
+              <h2>
+                <BsDoorOpen />
+              </h2>
             </Link>
           </>
         )}
       </nav>
-      {user && <div className={styles.userEmail}>Logged in as: {user.email}</div>}
+      {/* {user && <div className={styles.userEmail}>Logged in as: {user.email}</div>} */}
     </div>
   );
 }

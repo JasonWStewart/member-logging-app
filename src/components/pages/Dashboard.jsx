@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getCheckedInMembers } from "../utils/firebase";
-import Page from "./Page";
+import { getCheckedInMembers } from "../../utils/firebase";
+import Page from "../fragments/Page";
 
 function Dashboard() {
   const [categoryCounts, setCategoryCounts] = useState({

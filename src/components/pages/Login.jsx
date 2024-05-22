@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../utils/firebase";
-import { useUser } from "../context/UserContext";
-import Page from "./Page";
+import { loginUser } from "../../utils/firebase";
+import { useUser } from "../../context/UserContext";
+import Page from "../fragments/Page";
 
 function Login() {
   const [email, setEmail] = useState("");

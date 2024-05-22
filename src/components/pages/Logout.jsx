@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { logoutUser } from "../utils/firebase";
-import { useUser } from "../context/UserContext";
-import Page from "./Page";
+import { logoutUser } from "../../utils/firebase";
+import { useUser } from "../../context/UserContext";
+import Page from "../fragments/Page";
 
 function Logout() {
   const navigate = useNavigate();

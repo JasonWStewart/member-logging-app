@@ -1,6 +1,7 @@
 import { auth, db } from "../firebase-config";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { collection, addDoc, getDoc, doc, query, where, getDocs } from "firebase/firestore";
+import { collection, doc, deleteDoc, addDoc, query, where, getDocs } from "firebase/firestore";
+import { useUser } from "../context/UserContext";
 
 // Authentication functions
 export const registerUser = async (email, password) => {
@@ -41,7 +42,7 @@ export const addMembership = async (membershipData) => {
 
 export const getMembershipById = async (id) => {
   const membershipsRef = collection(db, "memberships");
-  const q = query(membershipsRef, where("id", "==", id));
+  const q = query(membershipsRef, where("memberNumber", "==", id));
   const querySnapshot = await getDocs(q);
   if (querySnapshot.empty) {
     throw new Error("No such document!");
@@ -49,11 +50,11 @@ export const getMembershipById = async (id) => {
   return querySnapshot.docs[0];
 };
 
-export const checkInMember = async (membershipId) => {
+export const checkInMember = async (membershipId, user, memberNumber) => {
   const today = new Date().toISOString().split("T")[0]; // Get the current date in YYYY-MM-DD format
   const attendanceCollection = `attendance_${today}`;
   const attendanceRef = collection(db, attendanceCollection);
-  const q = query(attendanceRef, where("membershipId", "==", membershipId));
+  const q = query(attendanceRef, where("memberNumber", "==", membershipId));
   const querySnapshot = await getDocs(q);
 
   if (!querySnapshot.empty) {
@@ -61,9 +62,11 @@ export const checkInMember = async (membershipId) => {
   }
 
   const attendanceData = {
+    memberNumber,
     membershipId,
     date: today,
     time: new Date().toLocaleTimeString(),
+    user: user.email,
   };
 
   try {
@@ -108,4 +111,15 @@ export const getAllMembers = async () => {
     ...doc.data(),
   }));
   return members;
+};
+
+export const deleteMember = async (memberId) => {
+  try {
+    const memberRef = doc(db, "memberships", memberId);
+    await deleteDoc(memberRef);
+    console.log("Member deleted successfully.");
+  } catch (error) {
+    console.error("Error deleting member:", error);
+    throw error;
+  }
 };
