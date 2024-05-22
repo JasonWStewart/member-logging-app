@@ -50,11 +50,14 @@ function LogEntry() {
       try {
         await checkInMember(membershipId, user, memberNumber);
         setStatus("Checked in successfully!");
+        setMemberNumber("");
       } catch (checkInError) {
         setError(checkInError.message);
+        setMemberNumber("");
       }
     } catch (error) {
       setError("No such membership ID!");
+      setMemberNumber("");
     }
   };
 
@@ -62,7 +65,7 @@ function LogEntry() {
     <Page>
       <h2>Check-in Card</h2>
       <div className={styles.inputGroup}>
-        <input type="text" value={memberNumber} onChange={(e) => setMemberNumber(e.target.value)} required placeholder="Card ID" />
+        <input type="number" value={memberNumber} onChange={(e) => setMemberNumber(e.target.value)} required placeholder="Card ID" />
         <div className={styles.buttonGroup}>
           <button onClick={handleLogEntry}>Log Entry</button>
         </div>
