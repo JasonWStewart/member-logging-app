@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../utils/firebase";
 import { useUser } from "../../context/UserContext";
+import styles from "./Login.module.css";
 import Page from "../fragments/Page";
 
 function Login() {
@@ -26,13 +27,12 @@ function Login() {
     <Page>
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
+        <div className={styles.inputGroup}></div>
         <div>
-          <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="Email" />
         </div>
         <div>
-          <label>Password:</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="Password" />
         </div>
         <button type="submit">Login</button>
       </form>

@@ -1,0 +1,17 @@
+.inputGroup {
+  margin-top: 1em;
+}
+
+.status,
+.error {
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+
+.fadeOut {
+  opacity: 0;
+}
+
+.buttonGroup {
+  margin-bottom: 1em;
+}

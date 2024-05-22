@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getAllMembers, deleteMember } from "../../utils/firebase";
-import styles from "./ListMembers.module.css"; // Import CSS module for styling
+import styles from "./ListMembers.module.css";
 import Page from "../fragments/Page";
+import { BsTrashFill } from "react-icons/bs";
 
 function ListMembers() {
   const [members, setMembers] = useState([]);
@@ -36,7 +37,7 @@ function ListMembers() {
           <tr>
             <th>ID</th>
             <th>Full Name</th>
-            <th>Card Type</th>
+            <th>Type</th>
             <th>Delete</th>
           </tr>
         </thead>
@@ -48,7 +49,7 @@ function ListMembers() {
               <td>{member.cardType}</td>
               <td>
                 <button onClick={() => handleDelete(member.id)} className={styles.deleteButton}>
-                  Delete
+                  <BsTrashFill />
                 </button>
               </td>
             </tr>

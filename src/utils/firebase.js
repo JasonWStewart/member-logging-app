@@ -54,7 +54,7 @@ export const checkInMember = async (membershipId, user, memberNumber) => {
   const today = new Date().toISOString().split("T")[0]; // Get the current date in YYYY-MM-DD format
   const attendanceCollection = `attendance_${today}`;
   const attendanceRef = collection(db, attendanceCollection);
-  const q = query(attendanceRef, where("memberNumber", "==", membershipId));
+  const q = query(attendanceRef, where("memberNumber", "==", memberNumber));
   const querySnapshot = await getDocs(q);
 
   if (!querySnapshot.empty) {

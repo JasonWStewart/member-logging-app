@@ -12,7 +12,9 @@ function Navbar() {
       <nav className={styles.navbar}>
         {!user && (
           <Link to="/" className={styles.navItem}>
-            <BsDoorClosed />
+            <h2>
+              <BsDoorClosed />
+            </h2>
           </Link>
         )}
         {user && (

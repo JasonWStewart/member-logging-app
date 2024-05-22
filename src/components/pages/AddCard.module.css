@@ -2,19 +2,11 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 1em;
   margin-bottom: 1em;
 }
 
-.buttonGroup button {
-  align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 0.25em;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  justify-content: center;
-  min-width: 5em;
-  min-height: 3em;
-}
 .activeButton {
   background-color: #b5ffdc;
 }
@@ -23,36 +15,7 @@
   background-color: #eee;
   color: rgba(0, 0, 0, 0.2);
 }
+
 .inputGroup {
   margin-top: 1em;
-}
-input {
-  margin-bottom: 1em;
-  padding: 6px 12px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  appearance: none;
-  border-radius: 4px;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  :focus {
-    color: #212529;
-    background-color: #fff;
-    border-color: #86b7fe;
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
-  }
-}
-
-.submitButton {
-  align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 0.25em;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  justify-content: center;
-  width: 10em;
-  min-height: 3em;
 }

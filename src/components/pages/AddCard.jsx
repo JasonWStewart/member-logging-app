@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { addMembership } from "../../utils/firebase";
 import styles from "./AddCard.module.css"; // Import the CSS module for styling
 import Page from "../fragments/Page";
+import ModalComponent from "../modals/ModalComponent";
 
 function LogMembership() {
   const [memberNumber, setMemberNumber] = useState("");
   const [cardType, setCardType] = useState("");
   const [fullName, setFullName] = useState("");
-  const [confirmationMessage, setConfirmationMessage] = useState("");
+  const [modalMessage, setModalMessage] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleCardTypeSelection = (type) => {
     setCardType(type);
@@ -23,13 +25,15 @@ function LogMembership() {
       };
       console.log(membershipData);
       await addMembership(membershipData);
-      setConfirmationMessage("Member added successfully!");
+      setModalMessage("Member added successfully!");
+      setIsModalOpen(true);
       setMemberNumber("");
       setCardType("");
       setFullName("");
     } catch (error) {
       console.error(error);
-      setConfirmationMessage("Error adding member.");
+      setModalMessage("Error adding member.");
+      setIsModalOpen(true);
     }
   };
 
@@ -71,7 +75,9 @@ function LogMembership() {
           Add New Card
         </button>
       </form>
-      {confirmationMessage && <p className={styles.confirmationMessage}>{confirmationMessage}</p>}
+      <ModalComponent isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)} contentLabel="Membership Status">
+        <p>{modalMessage}</p>
+      </ModalComponent>
     </Page>
   );
 }
