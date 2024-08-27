@@ -14,7 +14,8 @@ function ListMembers() {
   const fetchMembers = async () => {
     try {
       const membersList = await getAllMembers();
-      setMembers(membersList);
+      const sortedMembersList = membersList.sort((a, b) => a.memberNumber - b.memberNumber);
+      setMembers(sortedMembersList);
     } catch (error) {
       console.error("Error fetching members:", error);
     }
